@@ -50,7 +50,7 @@ jobs:
         VERSION: ${{ github.ref }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: ${{ github.ref }}
+        release_name: ${{ github.sha }}
         draft: false
         prerelease: true
     - name: Yet Another Upload Release Asset Action
