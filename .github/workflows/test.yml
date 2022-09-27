@@ -19,8 +19,22 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
+    
     - name: Build
       run: echo ${{ matrix.os }} > out.txt
+      
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VERSION: ${{ github.ref }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
+        draft: false
+        prerelease: false
+        
     - name: Yet Another Upload Release Asset Action
       uses: shogo82148/actions-upload-release-asset@v1.6.2
       with:
