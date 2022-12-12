@@ -1,0 +1,7 @@
+[workspace]
+members = ["learning-yew"]
+
+[workspace.package]
+version = "0.1.0"
+authors = ["taba"]
+edition = "2021"
