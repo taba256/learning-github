@@ -5,3 +5,9 @@ members = ["learning-yew"]
 version = "0.1.0"
 authors = ["taba"]
 edition = "2021"
+
+[profile.release]
+panic = 'abort'
+codegen-units = 1
+opt-level = 'z'
+lto = true
