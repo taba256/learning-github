@@ -6,7 +6,10 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 #[function_component(App)]
 fn app() -> Html {
     html! {
-        <h1>{ "Hello World" }</h1>
+        <>
+            <h1>{ "はろーわーるど" }</h1>
+            <img src={ "images/512x384.png" } />
+        </>
     }
 }
 
