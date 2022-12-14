@@ -27,5 +27,5 @@ jobs:
       with:
         name: foo
         path: |
-          ./foo/target/release/foo.exe
+          ./foo/target/x86_64-pc-windows-gnu/release/foo.exe
           ./foo/target/release/foo
