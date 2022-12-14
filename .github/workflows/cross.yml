@@ -12,11 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: install toolchain
+      run: rustup target add x86_64-pc-windows-gnu
     - name: Build
-      run: cargo build --release --target x86_64-pc-windows-gnu
+      run: |
+        cargo build --release
+        cargo build --release --target x86_64-pc-windows-gnu
       working-directory: ./foo
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ matrix.target }}
-        path: ./target/release/foo.exe
+        name: foo
+        path: |
+          ./foo/target/release/foo
+          ./foo/target/release/foo.exe
