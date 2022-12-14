@@ -8,3 +8,9 @@ edition = "2021"
 [dependencies]
 wee_alloc = "0.4.5"
 yew = { version = "0.20.0", features = ["csr"] }
+
+[profile.release]
+panic = 'abort'
+codegen-units = 1
+opt-level = 'z'
+lto = true
