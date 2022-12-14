@@ -28,4 +28,3 @@ jobs:
         name: foo
         path: |
           ./foo/target/release/foo.exe
-          ./foo/target/release/foo
