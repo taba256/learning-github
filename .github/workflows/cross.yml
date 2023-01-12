@@ -2,7 +2,7 @@ name: Cross
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -12,20 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - uses: Swatinem/rust-cache@v2
     - name: install toolchain
       run: |
         sudo apt install -y g++-mingw-w64-x86-64
         rustup target add x86_64-pc-windows-gnu
     - name: Build native
-      run: cargo build --release -v
+      run: cargo build --release -vv
       working-directory: ./foo
     - name: Build windows
-      run: cargo build --release --target x86_64-pc-windows-gnu -v
+      run: cargo build --release --target x86_64-pc-windows-gnu -vv
       working-directory: ./foo
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: foo
-        path: |
-          ./foo/target/x86_64-pc-windows-gnu/release/foo.exe
-          ./foo/target/release/foo
